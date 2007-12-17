@@ -18,7 +18,6 @@ BuildRequires:	perl(HTML::Template)
 BuildRequires:	perl(Parse::RecDescent)
 BuildRequires:	perl(Test::Simple)
 BuildArch: 	noarch
-BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
 %description
 This module provides an extension to HTML::Template which
