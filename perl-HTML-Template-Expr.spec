@@ -1,16 +1,16 @@
-%define module  HTML-Template-Expr
-%define	name	perl-%{module}
-%define version 0.07
-%define release %mkrel 3
+%define upstream_name    HTML-Template-Expr
+%define upstream_version 0.07
 
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary: 	HTML::Template extension adding expression support
-License: 	GPL or Artistic
+License: 	GPL+ or Artistic
 Group: 		Development/Perl
-Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/HTML/%{module}-%{version}.tar.bz2
-Url:            http://search.cpan.org/dist/%{module}
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/HTML/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
@@ -18,7 +18,7 @@ BuildRequires:	perl(HTML::Template)
 BuildRequires:	perl(Parse::RecDescent)
 BuildRequires:	perl(Test::Simple)
 BuildArch: 	noarch
-BuildRoot: 	%{_tmppath}/%{name}-%{version}
+BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module provides an extension to HTML::Template which
@@ -27,7 +27,7 @@ allows expressions in the template syntax.  This is purely an addition
 still work.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -48,4 +48,3 @@ rm -rf %{buildroot}
 %doc Changes README 
 %{perl_vendorlib}/HTML
 %{_mandir}/*/*
-
